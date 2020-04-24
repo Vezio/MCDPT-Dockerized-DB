@@ -17,7 +17,7 @@ POSTGRES_PASSWORD=yourpassword
 POSTGRES_DB=yourdbname
 ```
 
-Create an instance folder in ./app/: `./app/instance
+Create an instance folder in `./app/`: `./app/instance`
 Inside of the instance folder add the following:
 `__init__.py`
 `config.py`
