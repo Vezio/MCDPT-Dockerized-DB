@@ -1,5 +1,5 @@
 # MCDPT-Dockerized-DB
-A dockerized services: flask server and postgresql database. The flask server 
+Dockerized services: flask server and postgresql database. The flask server 
 is an interface to the postgresql database, providing the models and routes
 required to query the database.
 
