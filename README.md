@@ -29,7 +29,7 @@ SECRET_KEY = "secret"
 DBNAME = "yourdbname"
 DBUSER = "yourusername"
 DBPASS = "yourpassword"
-DBHOST = "db" # (this is based on the dockercompose service name)
+DBHOST = "db" # (this is based on the docker-compose service name, or your localhost)
 DBPORT = "5432" # (this is the default postgres port)
 
 SQLALCHEMY_DATABASE_URI = \
