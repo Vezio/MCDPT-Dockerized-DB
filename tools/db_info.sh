@@ -1,0 +1,2 @@
+user="fabricUser"
+db="fabricDB"
