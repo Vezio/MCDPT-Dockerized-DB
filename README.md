@@ -9,10 +9,13 @@ Daniel Grossmann,
 Dr. Donald Schwartz
 
 ## How to setup this repository
-Create a `.env. file in the root of this directory and include the following:
+Create a `.env` file in the root of this directory and include the following:
+
+```
 POSTGRES_USER=yourusername
 POSTGRES_PASSWORD=yourpassword
 POSTGRES_DB=yourdbname
+```
 
 Create an instance folder in ./app/: `./app/instance
 Inside of the instance folder add the following:
@@ -39,6 +42,7 @@ SQLALCHEMY_DATABASE_URI = \
 ```
 ## How to use this repository after setup
 `docker-compose build` will build the services
+
 `docker-compose up` will run the services
 
 `localhost:5000` will be the the address to make calls to the database (ofcourse
