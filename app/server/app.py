@@ -62,7 +62,7 @@ def listSessions(cwid):
                 return make_response(jsonify(sessionData), 200, {"Content-Type": "application/json"})
             else:
                 # user has not made a session
-                return make_response(jsonify(message="User has no sessions"), 404, {"Content-Type": "application/json"})
+                return make_response(jsonify(message="User has no sessions"), 204, {"Content-Type": "application/json"})
         else:
             # user was not found
             return make_response(jsonify(message="No user with cwid: " + cwid), 404, {"Content-Type": "application/json"})
@@ -111,6 +111,26 @@ def getSession(cwid, sessionNumber):
     except IntegrityError as error:
         app.logger.error(error)
         return make_response(jsonify(message="There is no session with the given cwid and session number"), 404, {"Content-Type": "application/json"})
+    except:
+        return make_response(jsonify(message="Unexpected server error"), 500, {"Content-Type": "application/json"})
+
+# route to get the data from a shared session
+@app.route("/getSharedSession/<cwid>/<sessionCWID>/<sessionNumber>", methods=["GET"])
+def getSharedSession(cwid, sessionCWID, sessionNumber):
+    try:
+        # find the session that has been requested
+        session = SharedSession.query.filter_by(sessionCWID=sessionCWID, sessionNumber=sessionNumber, shareToCWID=cwid).first().session
+
+        sessionData = []
+        for sessionTime in session.sessionTimes:
+            sessionData.append({"time": str(sessionTime.time), "values": [0] * len(sessionTime.sessionValues)})
+            for sessionValue in sessionTime.sessionValues:
+                sessionData[-1]["values"][sessionValue.sensorNumber] = sessionValue.sensorValue
+
+        return make_response(jsonify(data=sessionData, length=session.length, width=session.width), 200, {"Content-Type": "application/json"})
+    except IntegrityError as error:
+        app.logger.error(error)
+        return make_response(jsonify(message="There is no session with the given cwid and session number or the session has not been shared to the user"), 404, {"Content-Type": "application/json"})
     except:
         return make_response(jsonify(message="Unexpected server error"), 500, {"Content-Type": "application/json"})
 
