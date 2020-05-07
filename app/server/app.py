@@ -86,9 +86,9 @@ def listSharedSessions(cwid):
 
             return make_response(jsonify(sessions), 200, {"Content-Type": "application/json"})
         else:
-            return make_response(jsonify(message="User has not had a session shared with them"), 200, {"Content-Type": "application/json"})
+            return make_response(jsonify(message="User has not had a session shared with them"), 204, {"Content-Type": "application/json"})
     except IntegrityError as error:
-        return make_responsed(jsonify(message="There is no user with that cwid"), 400, {"Content-Type": "application/json"})
+        return make_response(jsonify(message="There is no user with that cwid"), 404, {"Content-Type": "application/json"})
     except:
         return make_response(jsonify(message="Unexpected server error"), 500, {"Content-Type": "application/json"})
 
