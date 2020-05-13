@@ -61,8 +61,13 @@ go back and make any changes to this repository's contents.
 - `localhost:5000/sessions/user/<cwid>`: cwid=integer
 - `localhost:5000/sessions/shared/user/<cwid>`: cwid=integer
 - `localhost:5000/getSession/<cwid>/<sessionNumber>`: {cwid,sessionNumber}=integers, respectively
+- `localhost:5000/getSharedSession/<cwid>/<sessionCWID>/<sessionNumber>`: {cwid,sessionCWID,sessionNumber}=integers, respectively
 
 ### POST
 - `localhost:5000/create/user/<cwid>/<name>/<password>`:cwid=integer, name=alphabetical, password=alphanumeric
 - `localhost:5000/create/session`
 - `localhost:5000/create/sharedSession/<sessionCWID>/<sessionNumber>/<shareToCWID>`: {cwid,sessionNumber,shareToCWID}=integers, respectively
+
+### Documentation
+- https://docs.docker.com/develop/develop-images/dockerfile_best-practices/
+- https://flask.palletsprojects.com/en/1.1.x/
