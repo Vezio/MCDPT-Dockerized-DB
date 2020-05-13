@@ -1,12 +1,16 @@
-# MCDPT-Dockerized-DB
-Dockerized services: flask server and postgresql database. The flask server 
-is an interface to the postgresql database, providing the models and routes
-required to query the database.
+# Authors: 
+Tyler Rimaldi->Tyler.Rimaldi1@Marist.edu, 
 
-Authors: 
-Tyler Rimaldi, 
-Daniel Grossmann,
-Dr. Donald Schwartz
+Daniel Grossmann->Daniel.Grossmann1@Marist.edu,
+
+Dr. Donald Schwartz->Donald.Schwartz@Marist.edu
+
+# What is MCDPT-Dockerized-DB
+This repo. contains two Dockerized services: flask server and postgresql database. The flask server 
+is an interface to the postgresql database, providing the models and routes required to query the database. The database
+is an instance of the postgresql database, it is the data store for all data on the application. 
+
+The flask server is an interface to the database as mentioned above, however, it also controls the communication to and from the the API. This is how all of our microservices communicate, through the API. In essence, for every service, there should be some interface ready to handle HTTP requests and responses to interact with our API.
 
 ## How to setup this repository
 Create a `.env` file in the root of this directory and include the following:
